@@ -29,6 +29,8 @@ st.divider()
 
 predictbutton = st.button("Predict")
 
+st.divider()
+
 if predictbutton: 
 
     gender_selected = 1 if gender == "Female" else 0 
