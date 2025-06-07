@@ -12,7 +12,9 @@ scaler = joblib.load("scaler.pkl")
 model = joblib.load("model.pkl") 
 
 st.title("Customer Churn Prediction App")
+
 st.divider()
+
 st.write("Please entere the values and hit the predict button for getting a prediction. ")
 
 st.divider()
