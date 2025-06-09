@@ -1,3 +1,5 @@
+# Customer Churn Dashboard -- Streamlit 
+
 # Gender -> 1 Female, 0 Male
 # Churn -> 1 yes, 0 No
 # Scaler is exported as scaler.pkl
@@ -14,7 +16,7 @@ import plotly.graph_objects as go
 
 pdf = FPDF()
 
-# Load the scaler, model, and customer data
+# Loading the scaler, model, and customer data
 scaler = joblib.load("scaler.pkl")
 model = joblib.load("model.pkl")
 df = pd.read_csv("customer_churn_data.csv")  # Must include CustomerID and all required columns
@@ -53,7 +55,7 @@ x = [customer_data["Age"], gender_val, customer_data["Tenure"], customer_data["M
 x_df = pd.DataFrame([x], columns=["Age", "Gender", "Tenure", "MonthlyCharges"])
 x_scaled = scaler.transform(x_df)
 
-# Predict probability only if model supports it
+# Predict probability 
 if hasattr(model, "predict_proba"):
     probability = model.predict_proba(x_scaled)[0][1]
 

@@ -41,7 +41,7 @@ if predictbutton:
 
     st.write(f"#### Prediction: **{predicted}**")
 
-    # Display churn probability 
+    # Displaying churn probability 
     if hasattr(model, "predict_proba"): 
         probability = model.predict_proba(x_scaled)[0][1]
         st.write(f"#### Probability Score: **{probability * 100:.1f}%**")
@@ -72,8 +72,7 @@ if predictbutton:
 else:
     st.info("Fill in the values and click 'Predict'.")
 
-# ------- Function to download it to PDF File 
-
+# ------- Function to download it to PDF File ------- 
 
 download_button = st.button("Generate PDF")
 
@@ -104,7 +103,7 @@ if download_button:
         pdf.output(tmp_file.name)
         tmp_file_path = tmp_file.name
 
-    # Display download button
+    # Displaying download button
     with open(tmp_file_path, "rb") as file:
         st.download_button(
             label="Download PDF 📄 ",
