@@ -29,7 +29,7 @@ The dataset includes customer demographics, service usage patterns, and a churn 
 
 ## Project Structure
 
-## Project Structure
+```
 
 customer_churn_prediction  
 │  
@@ -42,6 +42,7 @@ customer_churn_prediction
 ├── LICENSE                               Open-source license (MIT)  
 └── README.md                             Project documentation  
 
+```
 
 ## How to Run Locally
 
