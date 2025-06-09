@@ -29,15 +29,19 @@ The dataset includes customer demographics, service usage patterns, and a churn 
 
 ## Project Structure
 
+## Project Structure
+
 customer_churn_prediction  
-├── Customer_Churn_Prediction.py  
-├── pages/  
-│   └── Manual_Churn_Prediction.py  
-├── model.pkl  
-├── scaler.pkl  
-├── customer_churn_data.csv  
-├── LICENSE  
-└── README.md  
+│  
+├── Customer_Churn_Prediction.py          Main Streamlit dashboard  
+├── pages/                                Sub-pages for modular views  
+│   └── Manual_Churn_Prediction.py        Manual input prediction tool  
+├── model.pkl                             Trained machine learning model  
+├── scaler.pkl                            Scaler used during training  
+├── customer_churn_data.csv               Dataset with customer information  
+├── LICENSE                               Open-source license (MIT)  
+└── README.md                             Project documentation  
+
 
 ## How to Run Locally
 
