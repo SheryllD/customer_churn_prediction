@@ -30,7 +30,7 @@ The dataset includes customer demographics, service usage patterns, and a churn 
 ## Project Structure
 
 customer_churn_prediction  
-├── app.py  
+├── Customer_Churn_Prediction.py  
 ├── pages/  
 │   └── Manual_Churn_Prediction.py  
 ├── model.pkl  
