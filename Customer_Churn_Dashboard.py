@@ -59,7 +59,9 @@ x_scaled = scaler.transform(x_df)
 if hasattr(model, "predict_proba"):
     probability = model.predict_proba(x_scaled)[0][1]
 
-    if probability >= 0.7:
+    if probability >= 0.85:
+        category = "Very High"
+    elif probability >= 0.75:
         category = "High"
     elif probability >= 0.4:
         category = "Medium"
