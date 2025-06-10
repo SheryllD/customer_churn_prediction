@@ -32,7 +32,7 @@ The dataset includes customer demographics, service usage patterns, and a churn 
 • FPDF for exporting prediction results to PDF  
 • StandardScaler for feature scaling  
 • Multiple ML models: SVC, Logistic Regression, Random Forest, KNN, Decision Tree, XGBoost  
-• SMOTE for handling class imbalance
+• SMOTE for handling class imbalance  
 
 ---
 
@@ -76,42 +76,56 @@ streamlit run Customer_Churn_Prediction.py
 ## Methodology Summary
 
 ### 1. Data Review and Preprocessing
-- Handled missing values (`InternetService`) and checked for duplicates
-- Encoded categorical columns (`Gender`, `Churn`)
-- Selected numerical features for modeling
+- Loaded dataset and reviewed schema and null values
+- Found `InternetService` had 297 missing entries; filled them with an empty string
+- Checked for and confirmed absence of duplicates
+- Reviewed churn distribution (highly imbalanced)
+- Plotted histograms and bar plots for key features
+- Encoded categorical columns:
+  - `Gender`: 1 for Female, 0 for Male  
+  - `Churn`: 1 for Yes, 0 for No
+- Selected only numerical features: `Age`, `Gender`, `Tenure`, `MonthlyCharges`
 
 ### 2. Train-Test Split and Scaling
-- Performed 80-20 split using `train_test_split`
-- Applied `StandardScaler` to numerical features
+- Used `train_test_split(test_size=0.2)`
+- Applied `StandardScaler` for feature scaling
+- Saved the scaler to disk with `joblib`
 
 ### 3. Class Imbalance Handling
-- Applied **SMOTE** to training data to balance churn vs no-churn classes
+- Found `Churn=Yes` represented 88% of the dataset
+- Applied **SMOTE** on training data to synthetically oversample minority class (`Churn=0`)
 
 ### 4. Model Training and Tuning
-- Trained and tuned:
-  - Logistic Regression ()
-  - K-Nearest Neighbours (via GridSearchCV)
-  - Support Vector Machine ()
-  - Decision Tree
-  - Random Forest (with hyperparameter tuning)
-  - XGBoost (`scale_pos_weight=1`)
+Trained the following models:
+- **Logistic Regression**
+- **K-Nearest Neighbours** (GridSearchCV for `n_neighbors` and `weights`)
+- **Support Vector Machine** (GridSearchCV for `C` and `kernel`)
+- **Decision Tree** (GridSearchCV for multiple parameters)
+- **Random Forest** (GridSearchCV with tuning for `n_estimators`, `max_features`, `bootstrap`)
+- **XGBoost** (using `scale_pos_weight=1`, `eval_metric='logloss'`)
 
 ### 5. Evaluation & Metrics
-- Used custom evaluation function to show:
+- Used a custom evaluation function for each model:
   - Accuracy
-  - Classification report
-  - Confusion matrix
-  - ROC curve and AUC (where applicable)
-- Compared models using visual bar plots
+  - Confusion Matrix
+  - Classification Report (precision, recall, F1)
+  - ROC Curve and AUC (when applicable)
+- Stored and compared results across models visually
+- Observed that despite high overall accuracy, most models struggled with correctly identifying `Churn=0` cases
 
 ### 6. Visual Insights
-- Plotted actual vs predicted churn counts to assess model bias
-- Found prediction skew toward class 1; addressed partially with SMOTE and weighted models
+- Created bar plots for churn distribution and tenure comparisons
+- Compared `MonthlyCharges` and `Tenure` by churn class and gender
+- Plotted `Actual vs Predicted` churn counts
 
-### 7. Deployment via Streamlit
-- Interactive dashboard for churn prediction
-- Manual and ID-based input
-- Risk categorisation with PDF export functionality
+### 7. Final Model
+- Selected the model with the best accuracy as final model (`Logistic Regression`, 86%)
+- Saved it using `joblib` for Streamlit deployment
+
+### 8. Deployment via Streamlit
+- Developed interactive UI with Streamlit
+- Allows manual input or customer ID-based prediction
+- Renders churn risk level and offers downloadable prediction reports in PDF
 
 ---
 
