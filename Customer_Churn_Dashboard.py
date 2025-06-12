@@ -49,7 +49,7 @@ st.write(f"**Total Charges**: € {customer_data['TotalCharges']:.2f}")
 st.write(f"**Internet Service**: {customer_data['InternetService']}")
 st.write(f"**Technical Support**: {customer_data['TechSupport']}")
 
-# Prepare input for model
+# Preparing input for model
 gender_val = 1 if customer_data["Gender"] == "Female" else 0 
 x = [customer_data["Age"], gender_val, customer_data["Tenure"], customer_data["MonthlyCharges"]]
 x_df = pd.DataFrame([x], columns=["Age", "Gender", "Tenure", "MonthlyCharges"])

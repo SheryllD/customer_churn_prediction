@@ -12,16 +12,16 @@ model = joblib.load("model.pkl")
 
 st.title("Manual Prediction Tool")
 st.write(
-    "Use this tool to predict whether a customer is likely to churn based on just a few key details.\n\n"
+    "Use this tool to predict customer churn based on a few key details. The simple interface demonstrates how basic customer characteristics influence churn predictions through machine learning.\n\n"
     "**Steps:**\n"
     "1. Enter the customer’s age.\n"
     "2. Select their gender.\n"
     "3. Specify how long they’ve been a customer (tenure, in months).\n"
     "4. Enter their current monthly charge.\n\n"
     "Once all fields are filled in, click **'Predict'** to see the churn classification.\n\n"
-    "This simple interface allows you to explore how basic customer characteristics can influence churn predictions using machine learning."
 )
 
+st.divider()
 
 age = st.number_input("Enter Age", min_value=10, max_value=100, value=30)
 gender = st.selectbox("Enter Gender", ["Male", "Female"])
